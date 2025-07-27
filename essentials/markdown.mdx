@@ -14,21 +14,21 @@ O cadastro de produtos químicos é o primeiro passo para gerenciar seus materia
 ### 1. Acessar o Formulário
 
 1. Faça login na plataforma
-2. Navegue para **Materiais > Produtos Químicos**
+2. Navegue para **Materiais \> Produtos Químicos**
 3. Clique em **"Novo Cadastro"**
 
 ### 2. Preencher Informações Básicas
 
 #### Dados do Produto
 
-| Campo | Obrigatório | Descrição | Exemplo |
-|-------|-------------|-----------|---------|
-| **Nome do Produto** | Sim | Nome comercial do produto | Ácido Sulfúrico 98% |
-| **Código Interno** | Não | Código interno da empresa | AS-001 |
-| **Fabricante** | Sim | Nome do fabricante | Sigma-Aldrich |
-| **Número CAS** | Sim | Número CAS do componente principal | 7664-93-9 |
-| **Concentração** | Sim | Concentração do produto | 98% |
-| **Estado Físico** | Sim | Sólido, Líquido, Gasoso | Líquido |
+| Campo               | Obrigatório | Descrição                          | Exemplo             |
+| ------------------- | ----------- | ---------------------------------- | ------------------- |
+| **Nome do Produto** | Sim         | Nome comercial do produto          | Ácido Sulfúrico 98% |
+| **Código Interno**  | Não         | Código interno da empresa          | AS-001              |
+| **Fabricante**      | Sim         | Nome do fabricante                 | Sigma-Aldrich       |
+| **Número CAS**      | Sim         | Número CAS do componente principal | 7664-93-9           |
+| **Concentração**    | Sim         | Concentração do produto            | 98%                 |
+| **Estado Físico**   | Sim         | Sólido, Líquido, Gasoso            | Líquido             |
 
 #### Classificação GHS (Automática)
 
@@ -47,12 +47,12 @@ O sistema aplica automaticamente a classificação GHS baseada no número CAS:
 
 #### Dados de Segurança
 
-| Campo | Obrigatório | Descrição |
-|-------|-------------|-----------|
-| **EPIs Necessários** | Sim | Equipamentos de proteção individual |
-| **Condições de Armazenamento** | Sim | Temperatura, umidade, etc. |
-| **Incompatibilidades** | Sim | Substâncias incompatíveis |
-| **Procedimentos de Emergência** | Sim | Primeiros socorros, combate a incêndio |
+| Campo                           | Obrigatório | Descrição                              |
+| ------------------------------- | ----------- | -------------------------------------- |
+| **EPIs Necessários**            | Sim         | Equipamentos de proteção individual    |
+| **Condições de Armazenamento**  | Sim         | Temperatura, umidade, etc.             |
+| **Incompatibilidades**          | Sim         | Substâncias incompatíveis              |
+| **Procedimentos de Emergência** | Sim         | Primeiros socorros, combate a incêndio |
 
 #### Responsável Técnico
 
@@ -75,6 +75,7 @@ O sistema aplica automaticamente a classificação GHS baseada no número CAS:
 4. A FDS será armazenada no AWS S3
 
 **Requisitos do arquivo:**
+
 - Formato: PDF
 - Tamanho máximo: 10MB
 - Idioma: Preferencialmente português
@@ -159,15 +160,19 @@ O cadastro seguirá o fluxo configurado para sua empresa:
 ## Erros Comuns e Soluções
 
 ### Erro: "Número CAS inválido"
+
 **Solução:** Verifique se o número CAS está correto. Consulte a base de dados CAS ou entre em contato com o fabricante.
 
 ### Erro: "FDS não pode ser carregada"
+
 **Solução:** Verifique se o arquivo é PDF e tem menos de 10MB. Tente compactar o arquivo se necessário.
 
 ### Erro: "Responsável não encontrado"
+
 **Solução:** Verifique se o e-mail do responsável está correto e se o usuário existe no sistema.
 
 ### Erro: "Classificação GHS não aplicada"
+
 **Solução:** Verifique se o número CAS está correto. Se o problema persistir, entre em contato com o suporte.
 
 ## Ajuda Adicional
@@ -176,7 +181,7 @@ O cadastro seguirá o fluxo configurado para sua empresa:
 
 - **Tutorial em Vídeo:** Disponível na plataforma
 - **Base de Conhecimento:** Artigos detalhados
-- **Suporte Técnico:** suporte@motiron.com
+- **Suporte Técnico:** [suporte@motiron.com](mailto:suporte@motiron.com)
 - **Treinamento:** Solicite capacitação para sua equipe
 
 ### Próximos Passos
