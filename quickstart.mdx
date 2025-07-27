@@ -1,80 +1,138 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "Início Rápido"
+description: "Configure sua plataforma Motiron Chemicals em três passos simples"
 ---
 
-## Get started in three steps
+## Visão Geral
 
-Get your documentation site running locally and make your first customization.
+A Motiron Chemicals v2.0 é uma plataforma SaaS completa para gerenciamento de produtos químicos, resíduos perigosos e formulações internas. Este guia irá ajudá-lo a configurar e começar a usar a plataforma em minutos.
 
-### Step 1: Set up your local environment
+> **Importante:** A plataforma garante conformidade automática com normas como ABNT NBR 14.725:2023, ABNT NBR 10.004:2025 e GHS, permitindo que você foque na operação sem se preocupar com detalhes técnicos das regulamentações.
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+## Passo 1: Configuração Inicial
 
-### Step 2: Deploy your changes
+### 1.1 Acesso à Plataforma
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+1. Acesse [app.motiron.com](https://app.motiron.com)
+2. Use suas credenciais fornecidas pela equipe Motiron Tech
+3. Na primeira vez, você será solicitado a alterar sua senha
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+### 1.2 Configuração da Empresa
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+Após o primeiro login, configure os dados da sua empresa:
 
-### Step 3: Go live
+- **Informações básicas:** Nome, CNPJ, endereço
+- **Áreas operacionais:** Produção, Qualidade, Meio Ambiente, etc.
+- **Responsáveis por área:** Nome e e-mail dos gestores
+- **Configurações específicas:** Campos customizados conforme sua operação
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+:::tip
+**Dica:** Configure todas as áreas que utilizam produtos químicos desde o início. Isso facilitará o fluxo de aprovação e controle posterior.
+:::
 
-## Next steps
+## Passo 2: Cadastro de Materiais
 
-Now that you have your docs running, explore these key features:
+### 2.1 Produtos Químicos
 
-<CardGroup cols={2}>
+Comece cadastrando seus produtos químicos principais:
 
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
+1. Acesse **Materiais > Produtos Químicos > Novo Cadastro**
+2. Preencha os campos obrigatórios:
+   - Nome do produto
+   - Fabricante
+   - Classificação GHS (automática)
+   - Responsável técnico
+   - Upload da FDS (Ficha de Dados de Segurança)
 
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
+### 2.2 Resíduos Perigosos
 
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
+Para resíduos perigosos:
 
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
+1. Acesse **Materiais > Resíduos Perigosos > Novo Cadastro**
+2. O sistema aplicará automaticamente a classificação NBR 10.004:2025
+3. Faça upload da FDSR (Ficha de Dados de Segurança de Resíduos)
 
-</CardGroup>
+### 2.3 Formulações Internas
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+Para preparações internas:
+
+1. Acesse **Materiais > Formulações Internas > Novo Cadastro**
+2. O sistema gerará automaticamente a FDS Simplificada
+3. Configure o responsável técnico e datas de revisão
+
+:::warning
+**Atenção:** Todos os cadastros passam por fluxo de aprovação configurável. Mantenha os dados dos responsáveis sempre atualizados.
+:::
+
+## Passo 3: Rotulagem e Controle
+
+### 3.1 Geração de Etiquetas
+
+Após a aprovação dos materiais:
+
+1. Acesse **Rotulagem > Etiquetas GHS**
+2. Selecione o material aprovado
+3. Escolha o template (A4, pequenos frascos, fracionamentos)
+4. Gere e imprima a etiqueta
+
+### 3.2 Controle de Inventário
+
+Monitore seu inventário:
+
+1. Acesse **Inventário > Visão Geral**
+2. Visualize relatórios por área
+3. Exporte dados para Excel quando necessário
+4. Configure lembretes de revisão de FDS
+
+### 3.3 Segurança e Compatibilidade
+
+Utilize os recursos de segurança:
+
+1. **Matriz de Incompatibilidade:** Consulte antes do armazenamento
+2. **Diretrizes de Armazenamento:** Siga as recomendações do sistema
+3. **Alertas Automáticos:** Receba notificações de incompatibilidades
+
+## Próximos Passos
+
+### Configurações Avançadas
+
+- **Fluxo de Aprovação:** Configure etapas e responsáveis
+- **Notificações:** Personalize alertas por e-mail
+- **Dashboards:** Configure indicadores específicos da sua operação
+
+### Treinamento da Equipe
+
+- **Usuários de Cadastro:** Foque no preenchimento correto dos formulários
+- **Usuários de Aprovação:** Entenda o fluxo e responsabilidades
+- **Gestores:** Utilize os dashboards e relatórios gerenciais
+
+### Suporte Contínuo
+
+- **Central de Ajuda:** Acesse `/support` para tutoriais
+- **Suporte Técnico:** Entre em contato via e-mail ou chat
+- **Atualizações:** Mantenha-se informado sobre novas funcionalidades
+
+## Dicas Importantes
+
+### Boas Práticas
+
+- **Mantenha FDS atualizadas:** Configure lembretes de revisão
+- **Use responsáveis corretos:** Facilita o fluxo de aprovação
+- **Gere etiquetas sempre:** Garante conformidade regulatória
+- **Monitore o inventário:** Evite produtos vencidos ou sem documentação
+
+### Evite Problemas Comuns
+
+- **Dados incompletos:** Preencha todos os campos obrigatórios
+- **FDS desatualizadas:** Configure lembretes automáticos
+- **Aprovações pendentes:** Mantenha responsáveis ativos
+- **Etiquetas não geradas:** Gere sempre após aprovação
+
+## Precisa de Ajuda?
+
+- **Documentação completa:** Navegue pelos módulos específicos
+- **Suporte técnico:** suporte@motiron.com
+- **Treinamento:** Solicite capacitação para sua equipe
+- **Configuração avançada:** Consulte nossa equipe de implementação
+
+> **Lembre-se:** A Motiron Chemicals automatiza muitos processos complexos. Foque na qualidade dos dados e deixe o sistema cuidar da conformidade regulatória.

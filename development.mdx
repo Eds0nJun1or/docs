@@ -1,94 +1,230 @@
 ---
-title: 'Development'
-description: 'Preview changes locally to update your docs'
+title: "Visão Geral da Plataforma"
+description: "Conheça a arquitetura e recursos da Motiron Chemicals v2.0"
 ---
 
-<Info>
-  **Prerequisites**:
-  - Node.js version 19 or higher
-  - A docs repository with a `docs.json` file
-</Info>
+## Sobre a Motiron Chemicals v2.0
 
-Follow these steps to install and run Mintlify on your operating system.
+A Motiron Chemicals é uma plataforma SaaS moderna e robusta desenvolvida para gerenciamento completo de produtos químicos, resíduos perigosos e formulações internas. Nossa missão é simplificar a gestão química industrial garantindo conformidade total com as regulamentações brasileiras e internacionais.
 
-<Steps>
-<Step title="Install the Mintlify CLI">
+## Arquitetura da Plataforma
 
-```bash
-npm i -g mint
-```
-</Step>
+### Tecnologias Utilizadas
 
-<Step title="Preview locally">
+**Frontend:**
+- Next.js 14+ com TypeScript
+- Tailwind CSS para estilização
+- shadcn/ui para componentes
+- Design responsivo e acessível
 
-Navigate to your docs directory where your `docs.json` file is located, and run the following command:
+**Backend:**
+- NestJS com TypeScript
+- Prisma ORM para banco de dados
+- JWT para autenticação
+- APIs RESTful documentadas
 
-```bash
-mint dev
-```
+**Infraestrutura:**
+- AWS (RDS PostgreSQL, S3, CloudFront)
+- Redis para cache
+- Monitoramento CloudWatch
+- CI/CD com GitHub Actions
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+### Segurança e Compliance
 
-</Step>
-</Steps>
+- **LGPD:** Proteção completa de dados pessoais
+- **Criptografia:** AES-256 para dados sensíveis
+- **HTTPS/TLS 1.3:** Comunicação segura
+- **Auditoria:** Logs imutáveis de todas as ações
+- **Backup:** Retenção de 7 anos com recuperação automática
 
-## Custom ports
+## Módulos Principais
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on port 3333, use this command:
+### 1. Autenticação e Autorização
 
-```bash
-mint dev --port 3333
-```
+Sistema robusto de login com 6 perfis de usuário:
 
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
+- **Administrador Técnico (MOTIRON TECH):** Acesso completo ao sistema
+- **Administrador (MOTIRON TECH):** Gestão de clientes e configurações
+- **Gestor (CLIENTE):** Visão gerencial da empresa
+- **Cadastro (CLIENTE):** Cadastro de materiais
+- **Usuário de Aprovação (CLIENTE):** Aprovação de cadastros
+- **Consulta (CLIENTE):** Apenas visualização
 
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
+### 2. Gestão de Materiais
 
-## Mintlify versions
+**Produtos Químicos:**
+- Cadastro completo com classificação GHS automática
+- Upload e gestão de FDS no AWS S3
+- Controle de responsáveis técnicos
+- Notificações automáticas por e-mail
 
-Please note that each CLI release is associated with a specific version of Mintlify. If your local preview does not align with the production version, please update the CLI:
+**Resíduos Perigosos:**
+- Classificação conforme NBR 10.004:2025
+- Gestão de FDSR (Fichas de Dados de Segurança de Resíduos)
+- Códigos IBAMA e pictogramas de transporte
+- Controle de classificação Classe I e II
 
-```bash
-npm mint update
-```
+**Formulações Internas:**
+- Cadastro de preparações internas
+- Geração automática de FDS Simplificada
+- Controle de datas de elaboração e revisão
+- Histórico completo de alterações
 
-## Validating links
+### 3. Sistema de Rotulagem
 
-The CLI can assist with validating links in your documentation. To identify any broken links, use the following command:
+**Etiquetas GHS:**
+- Conformidade total com ABNT NBR 14.725:2023
+- Templates personalizáveis (A4, A3, específicos)
+- Pictogramas em alta resolução
+- QR Code para acesso à documentação
 
-```bash
-mint broken-links
-```
+**Etiquetas Especializadas:**
+- Pequenos frascos (≤ 250ml)
+- Fracionamentos com rastreabilidade
+- Personalização com logomarca da empresa
+- Preview antes da impressão
 
-## Deployment
+### 4. Inventário e Controle
 
-If the deployment is successful, you should see the following:
+**Gestão Completa:**
+- Controle de datas de revisão de FDS
+- Exportação em massa para Excel
+- Download de documentos em lote
+- Relatórios por área e responsável
 
-<Frame>
-  <img src="/images/checks-passed.png" alt="Screenshot of a deployment confirmation message that says All checks have passed." style={{ borderRadius: '0.5rem' }} />
-</Frame>
+**Rastreabilidade:**
+- Histórico completo de cadastros e alterações
+- Auditoria de todas as ações
+- Relatórios de eficiência operacional
+- Exportação para auditoria externa
 
-## Code formatting
+### 5. Segurança e Compatibilidade
 
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
+**Matriz de Incompatibilidade:**
+- Base de dados completa de incompatibilidades
+- Alertas automáticos para armazenamento
+- Consulta específica (químico A x B)
+- Impressão de matrizes personalizadas
 
-## Troubleshooting
+**Diretrizes de Segurança:**
+- Regras de armazenamento segregado
+- Validação antes de movimentações
+- Vídeos explicativos integrados
+- Procedimentos de emergência
 
-<AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
+### 6. Documentação Centralizada
 
-    This may be due to an outdated version of node. Try the following:
-    1. Remove the currently-installed version of the CLI: `npm remove -g mint`
-    2. Upgrade to Node v19 or higher.
-    3. Reinstall the CLI: `npm i -g mint`
-  </Accordion>
+**FDS e FDSR:**
+- Repositório seguro no AWS S3
+- Controle de versões automático
+- Pesquisa avançada por substância/fabricante
+- CDN para acesso rápido
 
-  <Accordion title="Issue: Encountering an unknown error">
-  
-    Solution: Go to the root of your device and delete the `~/.mintlify` folder. Then run `mint dev` again.
-  </Accordion>
-</AccordionGroup>
+**FDS Simplificada:**
+- Geração automática em PDF
+- Histórico de elaboração e revisões
+- Controle de responsáveis técnicos
+- Revisão anual obrigatória
 
-Curious about what changed in the latest CLI version? Check out the [CLI changelog](https://www.npmjs.com/package/mintlify?activeTab=versions).
+### 7. Fluxo de Aprovação
+
+**Sistema Flexível:**
+- Configuração customizável por empresa
+- Fluxo hierárquico ou paralelo
+- Múltiplos usuários por área
+- Estados de aprovação em tempo real
+
+**Notificações Automáticas:**
+- Lembretes diários para aprovadores
+- Status para responsáveis
+- E-mail automático para áreas envolvidas
+- Dashboard específico para aprovadores
+
+### 8. Analytics e Dashboards
+
+**Indicadores em Tempo Real:**
+- Quantidade de materiais cadastrados
+- Gráficos de pictogramas utilizados
+- Porcentagem de químicos perigosos
+- Status do fluxo de aprovação
+
+**Relatórios Gerenciais:**
+- Eficiência de aprovação por usuário
+- Tempo médio de aprovação por área
+- Relatórios de compliance regulatório
+- Exportação em PDF e Excel
+
+## Conformidade Regulatória
+
+### Normas Brasileiras
+
+**ABNT NBR 14.725:2023:**
+- Rotulagem de produtos químicos perigosos
+- Pictogramas e frases de perigo
+- Informações de EPIs necessários
+- QR Code para acesso à FDS
+
+**ABNT NBR 10.004:2025:**
+- Classificação de resíduos perigosos
+- Códigos IBAMA e pictogramas de transporte
+- Classificação Classe I e II
+- Relatórios para órgãos reguladores
+
+### Normas Internacionais
+
+**GHS (Globally Harmonized System):**
+- Classificação e rotulagem harmonizada
+- Pictogramas oficiais atualizados
+- Frases H (perigo) e P (precaução)
+- Sistema reconhecido mundialmente
+
+## Performance e Escalabilidade
+
+### Métricas de Performance
+
+- **Tempo de resposta:** < 3 segundos para páginas
+- **Pesquisas:** < 2 segundos para resultados
+- **Relatórios:** < 10 segundos para geração
+- **Disponibilidade:** SLA 99.5%
+
+### Capacidade
+
+- **Usuários simultâneos:** Até 1000
+- **Produtos químicos:** 100.000+ no PostgreSQL
+- **Documentos:** Armazenamento ilimitado no S3
+- **Auto-scaling:** Baseado em demanda
+
+## Benefícios para o Usuário Final
+
+### Simplificação de Processos
+
+- **Automação:** Conformidade regulatória automática
+- **Integração:** Todos os módulos conectados
+- **Notificações:** Alertas inteligentes
+- **Relatórios:** Dados organizados e acessíveis
+
+### Redução de Riscos
+
+- **Compliance:** Conformidade total com normas
+- **Segurança:** Matriz de incompatibilidade
+- **Rastreabilidade:** Histórico completo
+- **Auditoria:** Logs imutáveis
+
+### Eficiência Operacional
+
+- **Tempo:** Processos otimizados
+- **Recursos:** Gestão centralizada
+- **Decisões:** Dados em tempo real
+- **Treinamento:** Interface intuitiva
+
+## Próximos Passos
+
+Para começar a usar a plataforma:
+
+1. **Configure sua empresa:** Dados básicos e áreas
+2. **Cadastre materiais:** Produtos químicos, resíduos e formulações
+3. **Configure fluxos:** Aprovação e notificações
+4. **Gere etiquetas:** Conformidade automática
+5. **Monitore:** Dashboards e relatórios
+
+> **Dica:** A Motiron Chemicals automatiza processos complexos para que você possa focar na sua operação. O sistema cuida da conformidade regulatória enquanto você gerencia sua empresa.

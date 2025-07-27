@@ -1,88 +1,191 @@
 ---
-title: 'Markdown syntax'
-description: 'Text, title, and styling in standard markdown'
-icon: 'text-size'
+title: "Cadastro de Produtos Químicos"
+description: "Aprenda a cadastrar produtos químicos na plataforma Motiron Chemicals"
 ---
 
-## Titles
+## Visão Geral
 
-Best used for section headers.
+O cadastro de produtos químicos é o primeiro passo para gerenciar seus materiais na plataforma. Este módulo garante conformidade automática com as normas GHS e ABNT NBR 14.725:2023, simplificando o processo para usuários não técnicos.
 
-```md
-## Titles
-```
+> **Importante:** Todos os cadastros passam por fluxo de aprovação configurável. Mantenha os dados dos responsáveis sempre atualizados para agilizar o processo.
 
-### Subtitles
+## Passo a Passo do Cadastro
 
-Best used for subsection headers.
+### 1. Acessar o Formulário
 
-```md
-### Subtitles
-```
+1. Faça login na plataforma
+2. Navegue para **Materiais > Produtos Químicos**
+3. Clique em **"Novo Cadastro"**
 
-<Tip>
+### 2. Preencher Informações Básicas
 
-Each **title** and **subtitle** creates an anchor and also shows up on the table of contents on the right.
+#### Dados do Produto
 
-</Tip>
+| Campo | Obrigatório | Descrição | Exemplo |
+|-------|-------------|-----------|---------|
+| **Nome do Produto** | Sim | Nome comercial do produto | Ácido Sulfúrico 98% |
+| **Código Interno** | Não | Código interno da empresa | AS-001 |
+| **Fabricante** | Sim | Nome do fabricante | Sigma-Aldrich |
+| **Número CAS** | Sim | Número CAS do componente principal | 7664-93-9 |
+| **Concentração** | Sim | Concentração do produto | 98% |
+| **Estado Físico** | Sim | Sólido, Líquido, Gasoso | Líquido |
 
-## Text formatting
+#### Classificação GHS (Automática)
 
-We support most markdown formatting. Simply add `**`, `_`, or `~` around text to format it.
+O sistema aplica automaticamente a classificação GHS baseada no número CAS:
 
-| Style         | How to write it   | Result          |
-| ------------- | ----------------- | --------------- |
-| Bold          | `**bold**`        | **bold**        |
-| Italic        | `_italic_`        | _italic_        |
-| Strikethrough | `~strikethrough~` | ~strikethrough~ |
+- **Pictogramas de Perigo:** Atribuídos automaticamente
+- **Frases H (Perigo):** Selecionadas conforme classificação
+- **Frases P (Precaução):** Recomendações de segurança
+- **Palavra de Advertência:** Perigo ou Atenção
 
-You can combine these. For example, write `**_bold and italic_**` to get **_bold and italic_** text.
+:::tip
+**Dica:** A classificação GHS é aplicada automaticamente, mas você pode ajustar se necessário. Sempre verifique se a classificação está correta para seu produto específico.
+:::
 
-You need to use HTML to write superscript and subscript text. That is, add `<sup>` or `<sub>` around your text.
+### 3. Informações de Segurança
 
-| Text Size   | How to write it          | Result                 |
-| ----------- | ------------------------ | ---------------------- |
-| Superscript | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| Subscript   | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
+#### Dados de Segurança
 
-## Linking to pages
+| Campo | Obrigatório | Descrição |
+|-------|-------------|-----------|
+| **EPIs Necessários** | Sim | Equipamentos de proteção individual |
+| **Condições de Armazenamento** | Sim | Temperatura, umidade, etc. |
+| **Incompatibilidades** | Sim | Substâncias incompatíveis |
+| **Procedimentos de Emergência** | Sim | Primeiros socorros, combate a incêndio |
 
-You can add a link by wrapping text in `[]()`. You would write `[link to google](https://google.com)` to [link to google](https://google.com).
+#### Responsável Técnico
 
-Links to pages in your docs need to be root-relative. Basically, you should include the entire folder path. For example, `[link to text](/writing-content/text)` links to the page "Text" in our components section.
+- **Nome:** Nome completo do responsável
+- **E-mail:** E-mail para notificações
+- **Telefone:** Contato em caso de emergência
+- **Área:** Área de responsabilidade
 
-Relative links like `[link to text](../text)` will open slower because we cannot optimize them as easily.
+:::warning
+**Atenção:** O e-mail do responsável receberá notificações sobre o status do cadastro e lembretes de revisão de FDS.
+:::
 
-## Blockquotes
+### 4. Upload de Documentação
 
-### Singleline
+#### Ficha de Dados de Segurança (FDS)
 
-To create a blockquote, add a `>` in front of a paragraph.
+1. Clique em **"Upload FDS"**
+2. Selecione o arquivo PDF da FDS
+3. O sistema validará o formato
+4. A FDS será armazenada no AWS S3
 
-> Dorothy followed her through many of the beautiful rooms in her castle.
+**Requisitos do arquivo:**
+- Formato: PDF
+- Tamanho máximo: 10MB
+- Idioma: Preferencialmente português
 
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
-```
+#### Outros Documentos
 
-### Multiline
+- **Certificado de Análise:** Opcional
+- **Especificação Técnica:** Opcional
+- **Certificado de Qualidade:** Opcional
 
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
+### 5. Configurações Específicas
 
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-```
+#### Empresa Terceira (se aplicável)
 
-### LaTeX
+Se o produto é de empresa terceira:
 
-Mintlify supports [LaTeX](https://www.latex-project.org) through the Latex component.
+1. Selecione a empresa na lista
+2. O sistema notificará automaticamente o responsável
+3. O fluxo de aprovação será ajustado conforme configuração
 
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
+#### Campos Customizados
 
-```md
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-```
+Dependendo da configuração da sua empresa, podem aparecer campos adicionais:
+
+- **Código de Fornecedor**
+- **Categoria de Custo**
+- **Local de Armazenamento**
+- **Responsável de Área**
+
+### 6. Salvar e Enviar para Aprovação
+
+1. Revise todos os dados preenchidos
+2. Clique em **"Salvar e Enviar para Aprovação"**
+3. O sistema iniciará o fluxo de aprovação
+4. Notificações serão enviadas aos aprovadores
+
+## Fluxo Pós-Cadastro
+
+### 1. Aprovação
+
+O cadastro seguirá o fluxo configurado para sua empresa:
+
+- **Usuários de Aprovação:** Receberão notificação por e-mail
+- **Dashboard de Aprovação:** Visualização das pendências
+- **Status em Tempo Real:** Acompanhamento do progresso
+
+### 2. Notificações Automáticas
+
+- **Responsável Técnico:** Recebe atualizações de status
+- **Empresa Terceira:** Notificada sobre o cadastro
+- **Áreas Envolvidas:** Meio Ambiente, Segurança do Trabalho
+
+### 3. Após Aprovação
+
+- **Geração de Etiquetas:** Disponível imediatamente
+- **Controle de Inventário:** Produto incluído nos relatórios
+- **Matriz de Incompatibilidade:** Atualizada automaticamente
+
+## Dicas Importantes
+
+### Boas Práticas
+
+- **Preencha todos os campos obrigatórios:** Evita retorno para correção
+- **Use nomes descritivos:** Facilita a busca e identificação
+- **Mantenha FDS atualizadas:** Configure lembretes de revisão
+- **Verifique responsáveis:** E-mails corretos para notificações
+
+### Evite Problemas Comuns
+
+- **Dados incompletos:** Preencha todos os campos marcados como obrigatórios
+- **FDS desatualizada:** Use sempre a versão mais recente
+- **Responsável incorreto:** Verifique nome e e-mail antes de salvar
+- **Classificação GHS:** Confirme se a classificação automática está correta
+
+### Campos Críticos
+
+- **Número CAS:** Fundamental para classificação GHS
+- **Concentração:** Afeta a classificação de perigo
+- **Responsável Técnico:** Receberá todas as notificações
+- **FDS:** Documento obrigatório para conformidade
+
+## Erros Comuns e Soluções
+
+### Erro: "Número CAS inválido"
+**Solução:** Verifique se o número CAS está correto. Consulte a base de dados CAS ou entre em contato com o fabricante.
+
+### Erro: "FDS não pode ser carregada"
+**Solução:** Verifique se o arquivo é PDF e tem menos de 10MB. Tente compactar o arquivo se necessário.
+
+### Erro: "Responsável não encontrado"
+**Solução:** Verifique se o e-mail do responsável está correto e se o usuário existe no sistema.
+
+### Erro: "Classificação GHS não aplicada"
+**Solução:** Verifique se o número CAS está correto. Se o problema persistir, entre em contato com o suporte.
+
+## Ajuda Adicional
+
+### Recursos de Suporte
+
+- **Tutorial em Vídeo:** Disponível na plataforma
+- **Base de Conhecimento:** Artigos detalhados
+- **Suporte Técnico:** suporte@motiron.com
+- **Treinamento:** Solicite capacitação para sua equipe
+
+### Próximos Passos
+
+Após o cadastro aprovado:
+
+1. **Gere etiquetas GHS:** Conforme ABNT NBR 14.725:2023
+2. **Configure armazenamento:** Consulte a matriz de incompatibilidade
+3. **Monitore o inventário:** Acompanhe relatórios e alertas
+4. **Mantenha documentação:** Configure lembretes de revisão
+
+> **Lembre-se:** A Motiron Chemicals automatiza a conformidade regulatória. Foque na qualidade dos dados e deixe o sistema cuidar dos detalhes técnicos das normas.

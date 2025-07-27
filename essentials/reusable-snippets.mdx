@@ -1,110 +1,328 @@
 ---
-title: "Reusable snippets"
-description: "Reusable, custom snippets to keep content in sync"
-icon: "recycle"
+title: "Fluxo de Aprovação"
+description: "Entenda como funciona o sistema de aprovações da Motiron Chemicals"
 ---
 
-import SnippetIntro from '/snippets/snippet-intro.mdx';
+## Visão Geral
 
-<SnippetIntro />
+O fluxo de aprovação da Motiron Chemicals é um sistema flexível e configurável que garante que todos os cadastros de materiais sejam revisados pelos responsáveis adequados antes de serem liberados para uso. O sistema automatiza notificações e acompanhamento, simplificando o processo para usuários não técnicos.
 
-## Creating a custom snippet
+> **Importante:** O fluxo de aprovação é configurado especificamente para cada empresa. Entre em contato com o administrador para ajustar as configurações conforme suas necessidades.
 
-**Pre-condition**: You must create your snippet file in the `snippets` directory.
+## Como Funciona o Fluxo
 
-<Note>
-  Any page in the `snippets` directory will be treated as a snippet and will not
-  be rendered into a standalone page. If you want to create a standalone page
-  from the snippet, import the snippet into another file and call it as a
-  component.
-</Note>
+### 1. Estrutura do Fluxo
 
-### Default export
+#### Configuração Flexível
 
-1. Add content to your snippet file that you want to re-use across multiple
-   locations. Optionally, you can add variables that can be filled in via props
-   when you import the snippet.
+**Opções disponíveis:**
+- **Fluxo Hierárquico:** Aprovações sequenciais por área
+- **Fluxo Paralelo:** Aprovações simultâneas
+- **Fluxo Misto:** Combinação de hierárquico e paralelo
 
-```mdx snippets/my-snippet.mdx
-Hello world! This is my content I want to reuse across pages. My keyword of the
-day is {word}.
-```
+#### Áreas de Aprovação
 
-<Warning>
-  The content that you want to reuse must be inside the `snippets` directory in
-  order for the import to work.
-</Warning>
+**Áreas comuns configuradas:**
+- **Qualidade:** Controle de especificações
+- **Meio Ambiente:** Conformidade ambiental
+- **Segurança do Trabalho:** Riscos operacionais
+- **Produção:** Viabilidade operacional
+- **Compras:** Aspectos comerciais
 
-2. Import the snippet into your destination file.
+### 2. Tipos de Usuário de Aprovação
 
-```mdx destination-file.mdx
----
-title: My title
-description: My Description
----
+#### Perfis de Aprovação
 
-import MySnippet from '/snippets/path/to/my-snippet.mdx';
+**Administrador Técnico (MOTIRON TECH):**
+- Acesso completo ao sistema
+- Configuração de fluxos
+- Aprovação final de todos os materiais
 
-## Header
+**Gestor (CLIENTE):**
+- Visão gerencial do fluxo
+- Aprovação de materiais críticos
+- Relatórios de eficiência
 
-Lorem impsum dolor sit amet.
+**Usuário de Aprovação (CLIENTE):**
+- Aprovação específica por área
+- Visualização de pendências
+- Notificações automáticas
 
-<MySnippet word="bananas" />
-```
+### 3. Estados do Fluxo
 
-### Reusable variables
+#### Status de Aprovação
 
-1. Export a variable from your snippet file:
+| Status | Descrição | Ação Necessária |
+|--------|-----------|-----------------|
+| **Pendente** | Aguardando primeira aprovação | Usuário de aprovação deve revisar |
+| **Em Análise** | Sendo analisado por área | Aguardar decisão |
+| **Aprovado** | Aprovado por uma área | Aguardar próxima etapa |
+| **Rejeitado** | Rejeitado por área | Correções necessárias |
+| **Finalizado** | Aprovado por todas as áreas | Material liberado para uso |
 
-```mdx snippets/path/to/custom-variables.mdx
-export const myName = 'my name';
+## Processo de Aprovação
 
-export const myObject = { fruit: 'strawberries' };
-```
+### 1. Início do Fluxo
 
-2. Import the snippet from your destination file and use the variable:
+#### Cadastro Enviado
 
-```mdx destination-file.mdx
----
-title: My title
-description: My Description
----
+1. **Usuário de Cadastro:** Preenche formulário completo
+2. **Sistema:** Valida dados obrigatórios
+3. **Sistema:** Inicia fluxo de aprovação
+4. **Notificações:** Enviadas aos aprovadores
 
-import { myName, myObject } from '/snippets/path/to/custom-variables.mdx';
+#### Validação Automática
 
-Hello, my name is {myName} and I like {myObject.fruit}.
-```
+**Verificações realizadas:**
+- **Dados obrigatórios:** Todos preenchidos
+- **Classificação GHS:** Aplicada automaticamente
+- **FDS/FDSR:** Upload realizado
+- **Responsável técnico:** Dados completos
 
-### Reusable components
+### 2. Notificações Automáticas
 
-1. Inside your snippet file, create a component that takes in props by exporting
-   your component in the form of an arrow function.
+#### E-mail para Aprovadores
 
-```mdx snippets/custom-component.mdx
-export const MyComponent = ({ title }) => (
-  <div>
-    <h1>{title}</h1>
-    <p>... snippet content ...</p>
-  </div>
-);
-```
+**Conteúdo da notificação:**
+- Nome do material cadastrado
+- Responsável pelo cadastro
+- Data e hora do cadastro
+- Link direto para aprovação
+- Prazo para análise (se configurado)
 
-<Warning>
-  MDX does not compile inside the body of an arrow function. Stick to HTML
-  syntax when you can or use a default export if you need to use MDX.
-</Warning>
+#### Lembretes Diários
 
-2. Import the snippet into your destination file and pass in the props
+**Configuração automática:**
+- **Frequência:** Diária para pendências
+- **Horário:** 9h da manhã
+- **Destinatários:** Usuários de aprovação
+- **Conteúdo:** Lista de pendências por área
 
-```mdx destination-file.mdx
----
-title: My title
-description: My Description
----
+### 3. Dashboard de Aprovação
 
-import { MyComponent } from '/snippets/custom-component.mdx';
+#### Interface do Aprovador
 
-Lorem ipsum dolor sit amet.
+**Funcionalidades disponíveis:**
+- **Lista de Pendências:** Materiais aguardando aprovação
+- **Filtros:** Por área, tipo, responsável
+- **Preview:** Visualização rápida do cadastro
+- **Ações:** Aprovar, Rejeitar, Solicitar Correção
 
-<MyComponent title={'Custom title'} />
-```
+#### Informações Exibidas
+
+**Para cada material:**
+- Nome e código do produto
+- Responsável pelo cadastro
+- Data de cadastro
+- Área de responsabilidade
+- Status atual no fluxo
+
+### 4. Ações do Aprovador
+
+#### Aprovar Material
+
+1. **Revisar cadastro:** Verificar dados completos
+2. **Validar classificação:** Confirmar GHS correto
+3. **Verificar documentação:** FDS/FDSR adequada
+4. **Clicar "Aprovar":** Confirmar aprovação
+5. **Adicionar comentário:** Opcional
+
+#### Rejeitar Material
+
+1. **Identificar problema:** Dados incorretos ou incompletos
+2. **Clicar "Rejeitar":** Iniciar rejeição
+3. **Justificar rejeição:** Comentário obrigatório
+4. **Sistema:** Notifica responsável pelo cadastro
+5. **Material:** Retorna para correção
+
+#### Solicitar Correção
+
+1. **Identificar ajustes:** Pequenas correções necessárias
+2. **Clicar "Solicitar Correção":** Manter no fluxo
+3. **Adicionar comentário:** Especificar correções
+4. **Sistema:** Notifica responsável pelo cadastro
+5. **Material:** Aguarda correções
+
+## Configuração do Fluxo
+
+### 1. Configuração por Empresa
+
+#### Áreas de Aprovação
+
+**Configuração flexível:**
+- **Quantidade:** Definida por empresa
+- **Ordem:** Hierárquica ou paralela
+- **Responsáveis:** Múltiplos usuários por área
+- **Prazos:** Configuráveis por etapa
+
+#### Usuários por Área
+
+**Exemplo de configuração:**
+- **Qualidade:** 2 usuários de aprovação
+- **Meio Ambiente:** 1 usuário de aprovação
+- **Segurança:** 1 usuário de aprovação
+- **Produção:** 1 usuário de aprovação
+
+### 2. Configuração de Prazos
+
+#### Prazos por Etapa
+
+**Configurações disponíveis:**
+- **Prazo padrão:** 3 dias úteis
+- **Prazo urgente:** 1 dia útil
+- **Prazo crítico:** 4 horas
+- **Sem prazo:** Aprovação quando possível
+
+#### Alertas de Prazo
+
+**Notificações automáticas:**
+- **24h antes:** Lembrete de prazo
+- **Prazo vencido:** Alerta de atraso
+- **Escalação:** Notificação para gestor
+- **Relatório:** Eficiência de aprovação
+
+### 3. Configuração de Notificações
+
+#### Tipos de Notificação
+
+**E-mail automático:**
+- **Novo cadastro:** Para aprovadores
+- **Aprovação:** Para responsável pelo cadastro
+- **Rejeição:** Para responsável pelo cadastro
+- **Lembrete:** Para pendências diárias
+
+#### Configuração de Destinatários
+
+**Por tipo de material:**
+- **Químicos:** Qualidade, Meio Ambiente, Segurança
+- **Resíduos:** Meio Ambiente, Segurança
+- **Formulações:** Qualidade, Produção
+
+## Relatórios e Analytics
+
+### 1. Relatórios de Eficiência
+
+#### Métricas Disponíveis
+
+**Por usuário de aprovação:**
+- **Tempo médio:** De análise por material
+- **Quantidade:** Materiais aprovados/rejeitados
+- **Conformidade:** Com prazos estabelecidos
+- **Qualidade:** Taxa de rejeição
+
+**Por área:**
+- **Volume:** Materiais processados
+- **Tempo:** Média de aprovação
+- **Gargalos:** Etapas mais lentas
+- **Conformidade:** Com procedimentos
+
+### 2. Dashboard Gerencial
+
+#### Indicadores em Tempo Real
+
+**Visão geral:**
+- **Materiais pendentes:** Por área
+- **Tempo médio:** De aprovação
+- **Eficiência:** Por usuário
+- **Alertas:** Prazos vencidos
+
+#### Gráficos e Estatísticas
+
+**Visualizações disponíveis:**
+- **Gráfico de barras:** Aprovações por área
+- **Gráfico de linha:** Tempo médio ao longo do tempo
+- **Pizza:** Distribuição de status
+- **Tabela:** Ranking de eficiência
+
+### 3. Relatórios Exportáveis
+
+#### Formatos Disponíveis
+
+**Exportação de dados:**
+- **PDF:** Relatórios formatados
+- **Excel:** Dados para análise
+- **CSV:** Dados brutos
+- **JSON:** Para integração
+
+#### Conteúdo dos Relatórios
+
+**Informações incluídas:**
+- **Dados do material:** Nome, código, responsável
+- **Fluxo de aprovação:** Etapas e prazos
+- **Performance:** Tempo e eficiência
+- **Conformidade:** Com procedimentos
+
+## Dicas Importantes
+
+### Boas Práticas
+
+#### Para Usuários de Cadastro
+
+- **Preencha completamente:** Evite retorno para correção
+- **Verifique responsáveis:** E-mails corretos
+- **Mantenha FDS atualizadas:** Documentação adequada
+- **Acompanhe o fluxo:** Monitore status regularmente
+
+#### Para Usuários de Aprovação
+
+- **Analise rapidamente:** Respeite prazos estabelecidos
+- **Justifique rejeições:** Comentários claros e objetivos
+- **Mantenha consistência:** Aplique critérios uniformes
+- **Comunique problemas:** Alerte gestores sobre gargalos
+
+#### Para Gestores
+
+- **Monitore eficiência:** Acompanhe relatórios regularmente
+- **Configure adequadamente:** Fluxo conforme necessidades
+- **Treine a equipe:** Capacitação em procedimentos
+- **Otimize processos:** Identifique e corrija gargalos
+
+### Evite Problemas Comuns
+
+#### Problemas de Configuração
+
+- **Fluxo inadequado:** Configure conforme necessidades
+- **Prazos irreais:** Defina prazos factíveis
+- **Responsáveis incorretos:** Mantenha dados atualizados
+- **Notificações não configuradas:** Configure alertas adequados
+
+#### Problemas Operacionais
+
+- **Aprovações lentas:** Monitore e otimize
+- **Rejeições desnecessárias:** Padronize critérios
+- **Falta de comunicação:** Mantenha equipe informada
+- **Dados desatualizados:** Mantenha cadastros atualizados
+
+## Erros Comuns e Soluções
+
+### Erro: "Material não aparece na lista de pendências"
+**Solução:** Verifique se o material foi enviado para aprovação e se você tem permissão para a área correspondente.
+
+### Erro: "Não consigo aprovar o material"
+**Solução:** Verifique se você tem permissão de aprovação para a área do material. Entre em contato com o administrador.
+
+### Erro: "Notificação não recebida"
+**Solução:** Verifique se o e-mail está correto nas configurações. Verifique também a pasta de spam.
+
+### Erro: "Fluxo não configurado"
+**Solução:** Entre em contato com o administrador para configurar o fluxo de aprovação adequado para sua empresa.
+
+## Ajuda Adicional
+
+### Recursos de Suporte
+
+- **Tutorial em Vídeo:** Fluxo de aprovação
+- **Base de Conhecimento:** Procedimentos de aprovação
+- **Suporte Técnico:** suporte@motiron.com
+- **Treinamento:** Capacitação específica para aprovadores
+
+### Próximos Passos
+
+Após configurar o fluxo:
+
+1. **Treine a equipe:** Procedimentos de aprovação
+2. **Monitore eficiência:** Relatórios e dashboards
+3. **Otimize processos:** Identifique gargalos
+4. **Mantenha atualizado:** Configurações conforme necessidades
+
+> **Lembre-se:** O fluxo de aprovação é fundamental para garantir qualidade e conformidade. Configure adequadamente e monitore regularmente para otimizar o processo.

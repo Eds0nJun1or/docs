@@ -1,7 +1,8 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Motiron Chemicals v2.0",
+  "description": "Documentação da plataforma de gerenciamento de produtos químicos",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,58 +12,136 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Início",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Bem-vindo",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "quickstart"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Visão Geral",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "overview/platform",
+              "overview/compliance",
+              "overview/architecture"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Módulos",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Autenticação",
             "pages": [
-              "api-reference/introduction"
+              "auth/login",
+              "auth/profiles",
+              "auth/permissions"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Materiais",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "materials/chemicals/create",
+              "materials/chemicals/list",
+              "materials/wastes/create",
+              "materials/wastes/list",
+              "materials/preparations/create",
+              "materials/preparations/list"
+            ]
+          },
+          {
+            "group": "Inventário",
+            "pages": [
+              "inventory/overview",
+              "inventory/reports",
+              "inventory/export"
+            ]
+          },
+          {
+            "group": "Rotulagem",
+            "pages": [
+              "labeling/ghs-labels",
+              "labeling/small-containers",
+              "labeling/fractioning",
+              "labeling/customization"
+            ]
+          },
+          {
+            "group": "Segurança",
+            "pages": [
+              "safety/compatibility-matrix",
+              "safety/storage-guidelines",
+              "safety/emergency-procedures"
+            ]
+          },
+          {
+            "group": "Documentação",
+            "pages": [
+              "documentation/fds",
+              "documentation/fdsr",
+              "documentation/internal-fds"
+            ]
+          },
+          {
+            "group": "Aprovações",
+            "pages": [
+              "approvals/workflow",
+              "approvals/notifications",
+              "approvals/dashboard"
+            ]
+          },
+          {
+            "group": "Analytics",
+            "pages": [
+              "analytics/dashboard",
+              "analytics/reports",
+              "analytics/efficiency"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Configurações",
+        "groups": [
+          {
+            "group": "Empresas",
+            "pages": [
+              "settings/companies",
+              "settings/third-parties",
+              "settings/areas"
+            ]
+          },
+          {
+            "group": "Sistema",
+            "pages": [
+              "settings/approval-flows",
+              "settings/notifications",
+              "settings/customization"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Suporte",
+        "groups": [
+          {
+            "group": "Ajuda",
+            "pages": [
+              "support/troubleshooting",
+              "support/faq",
+              "support/contact"
+            ]
+          },
+          {
+            "group": "Recursos",
+            "pages": [
+              "support/training",
+              "support/guides",
+              "support/updates"
             ]
           }
         ]
@@ -71,19 +150,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Suporte",
+          "href": "mailto:suporte@motiron.com",
+          "icon": "message-circle"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Portal",
+          "href": "https://app.motiron.com",
+          "icon": "external-link"
         }
       ]
     }
@@ -95,21 +169,20 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Suporte",
+        "href": "mailto:suporte@motiron.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Acessar Plataforma",
+      "href": "https://app.motiron.com"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://linkedin.com/company/motiron",
+      "github": "https://github.com/motiron"
     }
   }
 }

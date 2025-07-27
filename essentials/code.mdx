@@ -1,35 +1,273 @@
 ---
-title: 'Code blocks1'
-description: 'Display inline code and code blocks'
-icon: 'code'
+title: "Rotulagem GHS"
+description: "Gere etiquetas automáticas conforme ABNT NBR 14.725:2023 e GHS"
 ---
 
-## Inline code
+## Visão Geral
 
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
+O sistema de rotulagem da Motiron Chemicals gera automaticamente etiquetas conformes às normas ABNT NBR 14.725:2023 e GHS (Globally Harmonized System). O processo é simplificado para usuários não técnicos, garantindo conformidade total com as regulamentações.
 
-```
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
-```
+> **Importante:** As etiquetas são geradas automaticamente após a aprovação do cadastro do material. O sistema aplica todas as regras regulatórias, permitindo que você foque na operação.
 
-## Code blocks
+## Tipos de Etiquetas Disponíveis
 
-Use [fenced code blocks](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) by enclosing code in three backticks and follow the leading ticks with the programming language of your snippet to get syntax highlighting. Optionally, you can also write the name of your code after the programming language.
+### 1. Etiquetas GHS Padrão (A4)
 
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
+**Aplicação:** Recipientes de qualquer tamanho
+**Conformidade:** ABNT NBR 14.725:2023
 
-````md
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-````
+**Elementos incluídos:**
+- Pictogramas de perigo em alta resolução
+- Palavra de advertência (Perigo/Atenção)
+- Frases H (perigo) e P (precaução)
+- Informações do produto e fabricante
+- QR Code para acesso à FDS
+- EPIs necessários para manuseio
+
+### 2. Etiquetas para Pequenos Frascos (≤ 250ml)
+
+**Aplicação:** Recipientes pequenos com espaço limitado
+**Conformidade:** ABNT NBR 14.725:2023 - Seção específica
+
+**Elementos incluídos:**
+- Informações essenciais condensadas
+- Pictogramas principais
+- Validade e lote
+- Responsável técnico
+- QR Code para informações completas
+
+### 3. Etiquetas para Fracionamentos
+
+**Aplicação:** Produtos fracionados internamente
+**Conformidade:** Rastreabilidade e controle interno
+
+**Elementos incluídos:**
+- Rastreabilidade do produto original
+- Controle de lote e validade
+- Responsável pelo fracionamento
+- QR Code para FDS original
+- Data de fracionamento
+
+## Passo a Passo para Geração
+
+### 1. Acessar o Módulo de Rotulagem
+
+1. Faça login na plataforma
+2. Navegue para **Rotulagem > Etiquetas GHS**
+3. Selecione o material aprovado
+
+### 2. Selecionar o Material
+
+**Filtros disponíveis:**
+- **Por área:** Produção, Qualidade, Meio Ambiente
+- **Por status:** Aprovados, Pendentes, Vencidos
+- **Por tipo:** Químicos, Resíduos, Formulações
+- **Por fabricante:** Lista de fornecedores
+
+### 3. Escolher o Template
+
+**Opções de template:**
+
+| Template | Tamanho | Aplicação | Conformidade |
+|----------|---------|-----------|--------------|
+| **A4 Padrão** | A4 | Recipientes gerais | ABNT NBR 14.725:2023 |
+| **A3 Grande** | A3 | Recipientes grandes | ABNT NBR 14.725:2023 |
+| **Pequeno Frasco** | 10x7cm | ≤ 250ml | ABNT NBR 14.725:2023 |
+| **Fracionamento** | A4 | Produtos fracionados | Controle interno |
+
+### 4. Configurar Personalização
+
+#### Logomarca da Empresa
+
+1. Selecione **"Incluir Logomarca"**
+2. O sistema usará a logomarca configurada
+3. Posicionamento automático conforme template
+
+#### Cores e Layout
+
+- **Cores padrão:** Conforme normas GHS
+- **Layout:** Otimizado para impressão
+- **Fonte:** Legível e conforme regulamentação
+
+### 5. Preview e Impressão
+
+#### Visualização Prévia
+
+1. Clique em **"Preview"**
+2. Verifique todos os elementos:
+   - Pictogramas corretos
+   - Informações completas
+   - QR Code funcional
+   - Layout adequado
+
+#### Configurações de Impressão
+
+**Recomendações:**
+- **Papel:** A4 ou A3 de qualidade
+- **Impressora:** Laser ou jato de tinta
+- **Resolução:** Mínimo 300 DPI
+- **Cores:** Impressão colorida para pictogramas
+
+## Elementos da Etiqueta GHS
+
+### 1. Cabeçalho
+
+**Informações obrigatórias:**
+- Nome do produto
+- Código interno (se aplicável)
+- Fabricante
+- Concentração e estado físico
+
+### 2. Pictogramas de Perigo
+
+**Classificação automática baseada no número CAS:**
+
+| Pictograma | Significado | Exemplo |
+|------------|-------------|---------|
+| **Explosivo** | Substâncias explosivas | Nitroglicerina |
+| **Inflamável** | Líquidos e gases inflamáveis | Etanol |
+| **Corrosivo** | Substâncias corrosivas | Ácido Sulfúrico |
+| **Tóxico** | Substâncias tóxicas | Cianeto |
+| **Perigoso para o meio ambiente** | Poluentes | Mercúrio |
+
+### 3. Palavra de Advertência
+
+- **"Perigo":** Para categorias de maior perigo
+- **"Atenção":** Para categorias de menor perigo
+
+### 4. Frases H (Perigo)
+
+**Exemplos:**
+- H225: Líquido e vapores muito inflamáveis
+- H314: Causa queimaduras graves na pele e lesões oculares
+- H301: Tóxico se ingerido
+
+### 5. Frases P (Precaução)
+
+**Exemplos:**
+- P210: Manter longe do calor/fontes de ignição
+- P233: Manter o recipiente bem fechado
+- P301+P310: Em caso de ingestão: ligar imediatamente para CENTRO DE INFORMAÇÃO TOXICOLÓGICA
+
+### 6. Informações de Segurança
+
+**EPIs Necessários:**
+- Luvas de proteção
+- Proteção ocular
+- Proteção respiratória (se necessário)
+- Vestimenta de proteção
+
+### 7. QR Code
+
+**Funcionalidades:**
+- Acesso direto à FDS
+- Informações completas do produto
+- Histórico de alterações
+- Contatos de emergência
+
+## Controle de Qualidade
+
+### Verificação Automática
+
+O sistema verifica automaticamente:
+
+- **Conformidade GHS:** Classificação correta
+- **Informações obrigatórias:** Todos os campos preenchidos
+- **Pictogramas:** Aplicação correta
+- **QR Code:** Funcionalidade garantida
+
+### Validação Manual
+
+**Verifique antes da impressão:**
+- Dados do produto corretos
+- Pictogramas adequados
+- Informações de segurança completas
+- Layout adequado para o recipiente
+
+## Personalização por Empresa
+
+### Configurações Disponíveis
+
+- **Logomarca:** Upload da marca da empresa
+- **Cores:** Paleta personalizada (dentro dos padrões GHS)
+- **Layout:** Posicionamento de elementos
+- **Informações adicionais:** Campos customizados
+
+### Templates Salvos
+
+- **Templates padrão:** Conforme normas
+- **Templates customizados:** Configurados por empresa
+- **Templates específicos:** Por tipo de produto
+
+## Relatórios e Controle
+
+### Relatórios de Impressão
+
+**Informações disponíveis:**
+- Quantidade de etiquetas geradas
+- Materiais sem etiquetas
+- Última data de impressão
+- Responsável pela geração
+
+### Controle de Versões
+
+- **Histórico:** Todas as etiquetas geradas
+- **Rastreabilidade:** Quem gerou e quando
+- **Alterações:** Mudanças no cadastro refletidas
+
+## Dicas Importantes
+
+### Boas Práticas
+
+- **Gere etiquetas sempre:** Após cada aprovação
+- **Verifique antes de imprimir:** Preview é fundamental
+- **Use papel adequado:** Resistente ao ambiente
+- **Mantenha backup:** Arquivos PDF salvos
+
+### Evite Problemas Comuns
+
+- **Etiquetas desatualizadas:** Gere sempre após alterações
+- **Informações incompletas:** Verifique todos os campos
+- **Impressão de baixa qualidade:** Use resolução adequada
+- **QR Code não funcional:** Teste antes de aplicar
+
+### Conformidade Regulatória
+
+- **ABNT NBR 14.725:2023:** Conformidade total
+- **GHS:** Sistema globalmente harmonizado
+- **Auditoria:** Rastreabilidade completa
+- **Atualizações:** Conforme revisões das normas
+
+## Erros Comuns e Soluções
+
+### Erro: "Etiqueta não pode ser gerada"
+**Solução:** Verifique se o material está aprovado e se todos os dados obrigatórios estão preenchidos.
+
+### Erro: "Pictogramas não aplicados"
+**Solução:** Verifique se o número CAS está correto no cadastro do material.
+
+### Erro: "QR Code não funcional"
+**Solução:** Verifique se a FDS foi carregada corretamente no cadastro.
+
+### Erro: "Template não disponível"
+**Solução:** Entre em contato com o suporte para configurar templates específicos.
+
+## Ajuda Adicional
+
+### Recursos de Suporte
+
+- **Tutorial em Vídeo:** Geração de etiquetas
+- **Base de Conhecimento:** Templates e configurações
+- **Suporte Técnico:** suporte@motiron.com
+- **Treinamento:** Capacitação específica para rotulagem
+
+### Próximos Passos
+
+Após gerar as etiquetas:
+
+1. **Aplique nos recipientes:** Conforme instruções
+2. **Monitore validade:** Configure alertas
+3. **Atualize quando necessário:** Após alterações no cadastro
+4. **Mantenha controle:** Relatórios de impressão
+
+> **Lembre-se:** A rotulagem GHS é obrigatória por lei. A Motiron Chemicals automatiza este processo para garantir conformidade total com as regulamentações.
